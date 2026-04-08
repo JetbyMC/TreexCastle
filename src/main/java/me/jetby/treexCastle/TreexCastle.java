@@ -17,8 +17,11 @@ import me.jetby.treexCastle.util.Logger;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public final class TreexCastle extends LibbPlugin {
@@ -45,8 +48,12 @@ public final class TreexCastle extends LibbPlugin {
 
         setBStats(this, 24879);
 
+        messages = getFileConfiguration("messages.yml");
+
         cfg = new ConfigConfiguration(this, getFileConfiguration("config.yml"));
         cfg.load();
+
+
 
         Bukkit.getScheduler().runTaskLater(this, () -> {
             locations = new LocationsConfiguration(this, getFile("locations.yml"), getFileConfiguration("locations.yml"));
@@ -123,5 +130,20 @@ public final class TreexCastle extends LibbPlugin {
         return Libb.MINI_MESSAGE.deserialize(string);
     }
 
+    private FileConfiguration messages;
+
+    public Component getFormattedMessage(String path) {
+        return r(messages.getString(path));
+    }
+    public List<Component> getFormattedMessageList(String path) {
+        List<Component> components = new ArrayList<>();
+        for (String str : messages.getStringList(path)) {
+            components.add(r(str));
+        }
+        return components;
+    }
+    public Component getFormattedMessage(String path, String target, String replace) {
+        return r(messages.getString(path, "").replace(target, replace));
+    }
 
 }

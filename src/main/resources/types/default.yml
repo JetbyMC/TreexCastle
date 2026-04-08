@@ -77,8 +77,12 @@ on_spawn:
   - '[explosion] 4 false false' # 4 это урон. Первый false/true ставить огонь? Второй false/true ломать блоки?
 
 on_break:
-  - '[actionbar] <white>У шалкера осталось <gray>{blocks_left} <white>прочности.'
-  - check1:
+#  - '[actionbar] <white>У шалкера осталось <gray>{blocks_left} <white>прочности.'
+  - example:
+      if: "{blocks_left} > 0"
+      then:
+        - '[actionbar] <white>У шалкера осталось <gray>{blocks_left} <white>прочности.'
+  - example2:
       if: "{blocks_left} == 10"
       then:
         - '[explosion] 4 false false'

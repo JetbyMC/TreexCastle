@@ -37,7 +37,6 @@ public class LocationsConfiguration {
                 .toList();
 
         this.locations.addAll(locations);
-        Logger.error(locations.toString());
     }
 
     public void save() {

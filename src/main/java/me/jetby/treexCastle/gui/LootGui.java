@@ -55,7 +55,6 @@ public class LootGui extends ParsedGui {
             }
         }
 
-
         instance.setSharedLootInventory(getInventory());
 
         Consumer<InventoryClickEvent> onClick = onClick();
@@ -71,7 +70,6 @@ public class LootGui extends ParsedGui {
             int clickedSlot = event.getSlot();
 
             if (originalItems.containsKey(clickedSlot)) {
-
                 if (player.hasCooldown(item.getType())) {
                     event.setCancelled(true);
                     return;

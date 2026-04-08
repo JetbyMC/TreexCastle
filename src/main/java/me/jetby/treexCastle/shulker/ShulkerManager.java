@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -251,6 +252,7 @@ public class ShulkerManager implements Listener {
             meta.displayName(randomMask.name());
             if (randomMask.enchanted()) {
                 meta.addEnchant(Enchantment.KNOCKBACK, 1, true);
+                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             }
             meta.getPersistentDataContainer().set(
                     TreexCastle.ITEM_KEY,

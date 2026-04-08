@@ -26,7 +26,7 @@ public class ChanceGui extends AdvancedGui {
 
 
     public ChanceGui(Player player, String type, String inv, TreexCastle plugin) {
-        super("Настроить шансы", 54);
+        super(plugin.getFormattedMessage("gui.chance.title"), 54);
         this.type = type;
         this.inv = inv;
         this.items = plugin.getItems();
@@ -47,17 +47,9 @@ public class ChanceGui extends AdvancedGui {
 
             wrapper.amount(item.getAmount());
             wrapper.slots(itemData.slot());
+            wrapper.displayName(plugin.getFormattedMessage("gui.chance.item.display_name", "{chance}", String.valueOf(chance[0])));
             wrapper.displayName(r("<#FB430A><bold>⭐ <white>Шанс: <gold>" + chance[0] + "%"));
-            wrapper.lore(List.of(
-                    r("<#FB430A><bold><st>=<#FB4C0E><bold><st>                                   &m="),
-                    r(""),
-                    r(" <#FB430A><bold>ЛКМ <gray>+<white>1% "),
-                    r(" <#FB430A><bold>ПКМ <gray>-<white>1% "),
-                    r(" <#FB430A><bold>SHIFT+ЛКМ <gray>+<white>10% "),
-                    r(" <#FB430A><bold>SHIFT+ПКМ <gray>-<white>10% "),
-                    r(""),
-                    r("<#FB430A><bold><st>=<#FB4C0E><bold><st>                                   &m=")
-            ));
+            wrapper.lore(plugin.getFormattedMessageList("gui.chance.item.lore"));
             wrapper.onClick(event -> {
                 event.setCancelled(true);
                 ClickType click = event.getClick();
@@ -73,7 +65,7 @@ public class ChanceGui extends AdvancedGui {
                 meta.getPersistentDataContainer().set(CHANCE, PersistentDataType.INTEGER, chance[0]);
                 item.setItemMeta(meta);
 
-                wrapper.displayName(r("<#FB430A><bold>⭐ <white>Шанс: <gold>" + chance[0] + "%"));
+                wrapper.displayName(plugin.getFormattedMessage("gui.chance.item.display_name", "{chance}", String.valueOf(chance[0])));
                 updateItem("slot_" + itemData.slot());
             });
 

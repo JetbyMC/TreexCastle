@@ -1,9 +1,16 @@
 
+##################################
+# Мы используем синтаксис гуи от Libb
+# Документация: https://wiki.jetby.space/plugins/libb/overview/gui-configuration
+##################################
+
 id: default_loot_menu
 
-title: "<black>Loot"
+title: ""
 size: 45
 
+
+# Слоты на которых по случайным слотам будут расставлены предметы
 loot-slots:
   - '9-35'
 

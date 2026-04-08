@@ -73,7 +73,8 @@ public record ShulkerHandler(@NotNull TreexCastle plugin) implements Listener {
 
         instance.setDurability(instance.getDurability() - 1);
         if (type.onBreak() != null)
-            ActionExecute.run(ActionContext.of(player, plugin).with(instance)
+            ActionExecute.run(ActionContext.of(player, plugin)
+                    .with(instance)
                     .replace("{blocks_left}", String.valueOf(instance.getDurability())), type.onBreak());
 
         if (instance.getDurability() <= 0) {
@@ -93,7 +94,8 @@ public record ShulkerHandler(@NotNull TreexCastle plugin) implements Listener {
 
         switch (shulker.lootDelivery()) {
             case GUI -> handleTimer(player, instance, event, () -> {
-                instance.getSharedLootInventory().close();
+                if (instance.getSharedLootInventory()!=null)
+                    instance.getSharedLootInventory().close();
             });
             case FLYING -> handleFlying(player, instance, event);
             default -> handleDrop(player, instance, event);
@@ -143,7 +145,6 @@ public record ShulkerHandler(@NotNull TreexCastle plugin) implements Listener {
     }
 
     private void handleDrop(Player player, ShulkerInstance instance, BlockBreakEvent e) {
-        ShulkerType shulker = instance.getType();
         handleTimer(player, instance, e, () -> {
             ShulkerManager.dropLoot(instance.getLoot(), instance.getType(), instance.getLocation());
         });
