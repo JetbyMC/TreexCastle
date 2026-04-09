@@ -81,7 +81,7 @@ on_break:
   - example:
       if: "{blocks_left} > 0"
       then:
-        - '[actionbar] <white>У шалкера осталось <gray>{blocks_left} <white>прочности.'
+        - '[action_bar] <white>У шалкера осталось <gray>{blocks_left} <white>прочности.'
   - example2:
       if: "{blocks_left} == 10"
       then:
