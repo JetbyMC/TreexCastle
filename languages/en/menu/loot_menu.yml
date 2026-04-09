@@ -1,0 +1,31 @@
+##################################
+# We use the GUI syntax from Libb
+# Documentation: https://wiki.jetby.space/plugins/libb/overview/gui-configuration
+##################################
+
+id: default_loot_menu
+
+title: ""
+size: 45
+
+
+# Slots in which loot items will be placed randomly
+loot-slots:
+  - '9-35'
+
+Items:
+  orange_decoration:
+    material: orange_stained_glass_pane
+    slots:
+      - '0'
+      - '8'
+      - '36'
+      - '44'
+    display_name: ""
+
+  black_decoration:
+    material: black_stained_glass_pane
+    slots:
+      - '1-7'
+      - '37-43'
+    display_name: ""

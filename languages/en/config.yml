@@ -1,0 +1,20 @@
+update-checker: true
+
+update:
+  enable: true
+  time: 1800 # Event start interval in seconds
+
+  # remove the msg line if not needed
+  msg:
+    - "---------------------"
+    - "All shulkers have been updated"
+    - "---------------------"
+
+
+formattedTime:
+  format: "%weeks% %days% %hours% %minutes% %seconds%"
+  weeks: ["week", "weeks", "weeks"]
+  days: ["day", "days", "days"]
+  hours: ["hour", "hours", "hours"]
+  minutes: ["minute", "minutes", "minutes"]
+  seconds: ["second", "seconds", "seconds"]

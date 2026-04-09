@@ -81,7 +81,6 @@ public record ShulkerHandler(@NotNull TreexCastle plugin) implements Listener {
             if (instance.isLooted()) return;
             instance.setLooted(true);
             handleLoot(player, instance, e);
-
             return;
         }
 

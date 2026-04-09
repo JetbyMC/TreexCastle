@@ -14,7 +14,7 @@ public class FormatTime {
         this.config = plugin.getCfg();
     }
 
-    Map<String, String> timeUnits = new HashMap<>();
+    private final Map<String, String> timeUnits = new HashMap<>();
 
     public String stringFormat(int totalSeconds) {
         int weeks = totalSeconds / (7 * 24 * 3600);

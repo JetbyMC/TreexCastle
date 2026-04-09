@@ -1,0 +1,42 @@
+gui:
+  chance:
+    title: "<black>Configure Chances"
+    item:
+      display_name: "<#FB430A><bold>⭐ <white>Chance: <gold>{chance}%"
+      lore:
+        - "<#FB430A><bold><st>=<#FB4C0E><bold><st>                                   &m="
+        - ""
+        - "<#FB430A><bold>LMB <gray>+<white>1% "
+        - "<#FB430A><bold>RMB <gray>-<white>1% "
+        - "<#FB430A><bold>SHIFT+LMB <gray>+<white>10% "
+        - "<#FB430A><bold>SHIFT+RMB <gray>-<white>10% "
+        - ""
+        - "<#FB430A><bold><st>=<#FB4C0E><bold><st>                                   &m="
+
+  inv:
+    title: "<black>Select Inventory"
+    inv_button:
+      display_name: "<#FB430A><bold>⭐ <white>Inventory: <yellow>{inv}"
+      lore:
+        - "<gold><bold><st>=                                   ="
+        - ""
+        - "<gold><bold>LMB <gray>- <white>Configure items "
+        - "<gold><bold>RMB <gray>- <white>Configure item chances "
+        - ""
+        - "<gold><bold><st>=                                   ="
+    add_button:
+      display_name: "<green>[+] Add new inventory"
+
+  items:
+    title: "<black>Item Editor"
+
+  main:
+    title: "<black>TreexCastle"
+    type_button:
+      display_name: "<!i><#FB430A><bold>⭐</bold> <white>Shulker: <yellow>{type}"
+      lore:
+        - "<!i><#FB430A><st>=                                   ="
+        - ""
+        - "<!i><#FB430A><b>▶</b> <white>Click to configure items"
+        - ""
+        - "<!i><#FB430A><st>=                                   ="

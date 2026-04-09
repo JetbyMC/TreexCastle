@@ -12,8 +12,9 @@
     <name>TreexCastle</name>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lang.dir>${project.basedir}/./languages</lang.dir>
     </properties>
 
     <build>
@@ -41,6 +42,38 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>build-lang-jars</id>
+                        <phase>package</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <target>
+                                <macrodef name="make-lang-jar">
+                                    <attribute name="lang"/>
+                                    <sequential>
+                                        <copy file="${project.build.directory}/${project.name}-${project.version}.jar"
+                                              tofile="${project.build.directory}/${project.name}-${project.version}-@{lang}.jar"/>
+
+                                        <jar destfile="${project.build.directory}/${project.name}-${project.version}-@{lang}.jar"
+                                             update="true">
+                                            <fileset dir="${lang.dir}/@{lang}"/>
+                                        </jar>
+                                    </sequential>
+                                </macrodef>
+                                <make-lang-jar lang="en"/>
+                                <make-lang-jar lang="ru"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
         <resources>
             <resource>

@@ -10,7 +10,7 @@ settings:
   # Редкость этого типа
   spawnChance: 50
 
-  loot_delivery: DROP # DROP | GUI | FLYING
+  loot_delivery: GUI # DROP | GUI | FLYING
   delivery_gui: default_loot_menu # используйте id меню который хотите открывать если `loot_delivery` стоит на GUI
 
   # remove-after с этой настройкой можно настроить что будет после того как прочность шалкера полностью сломается.
@@ -18,7 +18,7 @@ settings:
   # Если тип GUI, то гуи можно будет открывать на протяжении N времени и тогда шалкер пропадёт
   # Если тип FLYING, дроп будет вылетать адаптируясь под N время
   # Ставьте 0 если вам не нужен обратный отсчёт до удаления
-  remove-after: 0
+  remove-after: 25
 
 
   # В голограммах нет поддержки Mini Message, так как DecentHolograms использует свою колоризацию.

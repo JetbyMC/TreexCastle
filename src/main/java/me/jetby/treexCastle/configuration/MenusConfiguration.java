@@ -33,7 +33,7 @@ public record MenusConfiguration(TreexCastle plugin) {
 
     public void loadGuis() {
         GUI_CONFIG_MAP.clear();
-        File folder = new File(plugin.getDataFolder(), "Menu");
+        File folder = new File(plugin.getDataFolder(), "menu");
 
         if (!folder.exists() && folder.mkdirs()) {
             String[] defaults = {
@@ -45,7 +45,7 @@ public record MenusConfiguration(TreexCastle plugin) {
                 target.getParentFile().mkdirs();
 
                 if (!target.exists()) {
-                    plugin.saveResource("Menu/" + name, false);
+                    plugin.saveResource("menu/" + name, false);
                 }
             }
         }

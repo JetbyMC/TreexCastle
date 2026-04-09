@@ -49,7 +49,7 @@ public final class TreexCastle extends LibbPlugin {
 
         messages = getFileConfiguration("messages.yml");
 
-        cfg = new ConfigConfiguration(this, getFileConfiguration("config.yml"));
+        cfg = new ConfigConfiguration(this, getConfig());
         cfg.load();
 
 

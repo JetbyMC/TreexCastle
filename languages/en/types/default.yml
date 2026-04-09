@@ -1,0 +1,90 @@
+id: default
+
+
+settings:
+
+  type: LIGHT_GRAY_SHULKER_BOX
+  durability: 50
+
+  lootAmount: 2-5
+  # Rarity of this type
+  spawnChance: 50
+
+  loot_delivery: GUI # DROP | GUI | FLYING
+  delivery_gui: default_loot_menu # use the menu id you want to open if `loot_delivery` is set to GUI
+
+  # remove-after — with this setting you can configure what happens after the shulker's durability is fully broken.
+  # If the type is DROP, after N seconds the shulker will disappear and drop loot on the ground.
+  # If the type is GUI, the GUI will remain openable for N seconds, then the shulker will disappear.
+  # If the type is FLYING, the drop will fly out adapting to N seconds.
+  # Set to 0 if you do not need a countdown before removal.
+  remove-after: 25
+
+
+  # Holograms do not support MiniMessage, as DecentHolograms uses its own colorization.
+  # Read more here: https://wiki.decentholograms.eu/general/format-and-colors/colors/
+  hologram:
+    enable: true
+    x: 0.5
+    y: 2.0
+    z: 0.5
+    lines:
+      - '&7Common'
+      - '&fThe shulker has {blocks_left} durability remaining.'
+
+  hologram-remove:
+    enable: true
+    x: 0.5
+    y: 2.0
+    z: 0.5
+    lines:
+      - '&fThe shulker will disappear in {time_left} seconds.'
+
+
+flying-drop-particle:
+  enabled: true
+  visual-fire: false
+  sound: block_lava_extinguish
+  pitch: 1.0
+  volume: 1.0
+  particle: SOUL_FIRE_FLAME
+  amount: 1
+  offset-x: 0.0
+  offset-y: 3.0
+  offset-z: 0.0
+  min-y: 6.0
+  max-y: 10.0
+  min-speed: 0.3
+  max-speed: 1.0
+
+mask:
+  enable: true
+  # Anti-spam
+  # Delay before picking up another item
+  # Delay in ticks, 20 ticks = 1 second
+  take-cooldown: 40 # WORKS ONLY FOR GUI
+  items:
+    m1:
+      material: COBWEB
+      enchanted: true
+      name: "<#0EC8E2><obf>|||||||||"
+    m2:
+      material: PHANTOM_MEMBRANE
+      enchanted: true
+      name: "<#0EC8E2><obf>|||||||||"
+
+on_spawn:
+  - '[explosion] 4 false false' # 4 is the damage. First false/true — spawn fire? Second false/true — break blocks?
+
+on_break:
+  #  - '[actionbar] <white>The shulker has <gray>{blocks_left} <white>durability remaining.'
+  - example:
+      if: "{blocks_left} > 0"
+      then:
+        - '[actionbar] <white>The shulker has <gray>{blocks_left} <white>durability remaining.'
+  - example2:
+      if: "{blocks_left} == 10"
+      then:
+        - '[explosion] 4 false false'
+
+on_despawn: { }
