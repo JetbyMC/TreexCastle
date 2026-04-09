@@ -98,7 +98,7 @@
         </repository>
         <repository>
             <id>jetby-repo</id>
-            <url>http://api.jetby.space/</url>
+            <url>https://api.jetby.org/</url>
         </repository>
         <repository>
             <id>codemc</id>
