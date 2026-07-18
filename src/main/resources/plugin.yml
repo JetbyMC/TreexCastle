@@ -1,5 +1,5 @@
 name: TreexCastle
-version: '3.0'
+version: ${project.version}
 main: org.jetby.treexcastle.TreexCastle
 api-version: '1.20'
 load: POSTWORLD
