@@ -38,7 +38,7 @@ public class LootGui extends ParsedGui {
             viewer.openInventory(instance.getSharedLootInventory());
             return;
         }
-
+        open(viewer);
         ShulkerType shulker = instance.getType();
 
         for (ItemStack item : instance.getLoot()) {
@@ -49,13 +49,11 @@ public class LootGui extends ParsedGui {
             if (shulker.isMask() && !shulker.maskMap().isEmpty()) {
                 originalItems.put(slot, item);
                 ItemStack fakeItem = ShulkerManager.applyMask(shulker, item);
-                getInventory().setItem(slot, ShulkerManager.applyMask(shulker, fakeItem));
+                getInventory().setItem(slot, fakeItem);
             } else {
                 getInventory().setItem(slot, item);
             }
         }
-
-        instance.setSharedLootInventory(getInventory());
 
         Consumer<InventoryClickEvent> onClick = onClick();
         onClick(event -> {
@@ -106,7 +104,7 @@ public class LootGui extends ParsedGui {
             if (empty) instance.setSharedLootInventory(null);
         });
 
-        open(viewer);
+        instance.setSharedLootInventory(getInventory());
     }
 
 
