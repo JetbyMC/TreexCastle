@@ -66,14 +66,15 @@ public class ShulkerManager implements Listener {
     }
 
     public static List<ItemStack> getRandomLoot(ShulkerType shulker) {
-        if (shulker.items() == null || shulker.items().isEmpty()) {
+        List<ItemsConfiguration.ItemsData> items = TreexCastle.INSTANCE.getItems().getData().get(shulker.id());
+        if (items == null || items.isEmpty()) {
             return List.of();
         }
 
         int count = getCount(shulker);
         if (count == 0) return List.of();
 
-        double totalWeight = shulker.items().stream()
+        double totalWeight = items.stream()
                 .mapToDouble(ItemsConfiguration.ItemsData::chance)
                 .sum();
 
@@ -85,7 +86,7 @@ public class ShulkerManager implements Listener {
             double roll = Math.random() * totalWeight;
             double cumulative = 0;
 
-            for (ItemsConfiguration.ItemsData lootItem : shulker.items()) {
+            for (ItemsConfiguration.ItemsData lootItem : items) {
                 cumulative += lootItem.chance();
                 if (roll <= cumulative) {
                     result.add(lootItem.itemStack().clone());
@@ -98,7 +99,8 @@ public class ShulkerManager implements Listener {
     }
 
     public static int getCount(ShulkerType shulker) {
-        if (shulker.lootAmount() == null || shulker.items() == null || shulker.items().isEmpty()) return 0;
+        List<ItemsConfiguration.ItemsData> items = TreexCastle.INSTANCE.getItems().getData().get(shulker.id());
+        if (shulker.lootAmount() == null || items == null || items.isEmpty()) return 0;
 
         try {
             if (shulker.lootAmount().contains("-")) {

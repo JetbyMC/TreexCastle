@@ -32,7 +32,6 @@ public record ShulkerType(String id,
                           int spawnChance,
                           Holo holo,
                           Holo holoRemove,
-                          List<ItemsConfiguration.ItemsData> items,
                           ActionBlock onSpawn,
                           ActionBlock onBreak,
                           ActionBlock onDespawn

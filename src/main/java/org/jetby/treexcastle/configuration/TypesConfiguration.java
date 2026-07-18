@@ -2,6 +2,7 @@ package org.jetby.treexcastle.configuration;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.jetby.libb.action.ActionUtil;
 import org.jetby.libb.action.record.ActionBlock;
 import org.jetby.libb.gui.parser.ParseUtil;
 import org.jetby.treexcastle.TreexCastle;
@@ -74,11 +75,9 @@ public class TypesConfiguration {
 
         FlyingDropParticle dropParticle = loadDropParticle(config.getConfigurationSection("flying-drop-particle"));
 
-        List<ItemsConfiguration.ItemsData> items = plugin.getItems().getData().get(id);
-
-        ActionBlock onSpawn = ParseUtil.getActionBlock(config, "on_spawn");
-        ActionBlock onBreak = ParseUtil.getActionBlock(config, "on_break");
-        ActionBlock onDespawn = ParseUtil.getActionBlock(config, "on_despawn");
+        ActionBlock onSpawn = ActionUtil.getActionBlock(config, "on_spawn");
+        ActionBlock onBreak = ActionUtil.getActionBlock(config, "on_break");
+        ActionBlock onDespawn = ActionUtil.getActionBlock(config, "on_despawn");
 
         Holo holo = new Holo(
                 section.getBoolean("hologram.enable", false),
@@ -112,7 +111,6 @@ public class TypesConfiguration {
                 spawnChance,
                 holo,
                 holoRemove,
-                items,
                 onSpawn,
                 onBreak,
                 onDespawn
